@@ -28,6 +28,9 @@ function App({ store }) {
               >
                 <div className="Item-code">{item.code}</div>
                 <div className="Item-title">{item.title}</div>
+                
+                {item.discharge > 0 ? <div>Выделяли {item.discharge} раз</div> : ''}
+                
                 <div className="Item-actions">
                   <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
                 </div>
