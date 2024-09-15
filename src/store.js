@@ -50,6 +50,7 @@ class Store {
       ...this.state,
       list: [...this.state.list, { code: code, title: 'Новая запись', discharge: 0 }],
     });
+    
   }
 
   /**
@@ -73,23 +74,23 @@ class Store {
       list: this.state.list.map(item => {
         if (item.code === code) {
           item.selected = !item.selected;
-          this.dischargeCounter()
+          this.dischargeCounter(code);
         } else {
-          item.selected = false
+          item.selected = false;
         }
         return item;
       }),
     });
   }
 
-
-  dischargeCounter() {
+  dischargeCounter(code) {
     this.state.list.map(item => {
-      if (item.selected) {
-        item.discharge++
+      if (item.selected && item.code === code) {
+        item.discharge++;
       }
-    })
+    });
   }
+  
 }
 
 export default Store;

@@ -14,7 +14,10 @@ const store = new Store({
     { code: 6, title: 'Шестая запись', discharge: 0 },
     { code: 7, title: 'Седьмая запись', discharge: 0 },
   ],
+  idCount: 7
 });
+
+
 
 const root = createRoot(document.getElementById('root'));
 
@@ -24,3 +27,5 @@ store.subscribe(() => {
 
 // Первый рендер приложения
 root.render(<App store={store} />);
+
+

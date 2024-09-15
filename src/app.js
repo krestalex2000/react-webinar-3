@@ -1,5 +1,5 @@
 import React from 'react';
-import { createElement } from './utils.js';
+import { createElement, declOfNum } from './utils.js';
 import './styles.css';
 
 /**
@@ -9,7 +9,7 @@ import './styles.css';
  */
 function App({ store }) {
   const list = store.getState().list;
-
+  
   return (
     <div className="App">
       <div className="App-head">
@@ -28,9 +28,13 @@ function App({ store }) {
               >
                 <div className="Item-code">{item.code}</div>
                 <div className="Item-title">{item.title}</div>
-                
-                {item.discharge > 0 ? <div>Выделяли {item.discharge} раз</div> : ''}
-                
+
+                {item.discharge > 0 ? (
+                  <div className="Item-discharges">Выделяли {item.discharge} {declOfNum(item.discharge)}</div>
+                ) : (
+                  ''
+                )}
+
                 <div className="Item-actions">
                   <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
                 </div>
@@ -41,6 +45,7 @@ function App({ store }) {
       </div>
     </div>
   );
+  
 }
 
 export default App;
