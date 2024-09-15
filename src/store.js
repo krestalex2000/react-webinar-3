@@ -43,12 +43,13 @@ class Store {
    */
   addItem() {
 
-    let code;
-    this.state.list.length > 0 ? code = this.state.list.at(-1).code + 1 : code = 1;
+    // let code;
+    // this.state.list.length > 0 ? code = this.state.list.at(-1).code + 1 : code = 1;
+    this.idCounter()
 
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: code, title: 'Новая запись', discharge: 0 }],
+      list: [...this.state.list, { code: this.state.idCount, title: 'Новая запись', discharge: 0 }],
     });
     
   }
@@ -89,6 +90,13 @@ class Store {
         item.discharge++;
       }
     });
+  }
+
+  idCounter() {
+    this.setState({
+      ...this.state,
+      idCount: this.state.idCount + 1
+    })
   }
   
 }
